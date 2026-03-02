@@ -14,7 +14,6 @@
 - 📍 **Clickable Venue (Google Maps Integration)**
 - 📜 **Clickable पत्रिका Download (Image)**
 - 📱 **Mobile-friendly & Responsive Design**
-- 🇮🇳 **Fully Marathi Language UI**
 
 ---
 
@@ -120,9 +119,13 @@ Deploy easily on:
 Designed with ❤️ to celebrate  
 **Marathi culture, विवाह संस्कार, आणि सहचर्य प्रेम**.
 
+☕ **Buy me a coffee**  
+If you enjoyed this project and wish to support the creator:  
+**UPI:** `surajpravindeshmukh@upi`
+
 ---
 
 ## 📜 License
 
-Free to use for **personal wedding invitations**.  
+Free to use for **personal wedding invitations**
 Commercial reuse requires prior permission.
