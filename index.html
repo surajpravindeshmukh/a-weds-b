@@ -856,6 +856,9 @@
 
             // Music toggle functionality
             if (audio && musicBtn) {
+                // Track if audio has been initialized by user interaction
+                let audioInitialized = false;
+
                 // Update button icon based on audio state
                 function updateMusicButton() {
                     if (audio.paused) {
@@ -870,9 +873,29 @@
                 // Initial update
                 setTimeout(updateMusicButton, 500);
 
+                // Function to initialize audio on first user interaction
+                function initializeAudio() {
+                    if (!audioInitialized) {
+                        audioInitialized = true;
+                        // Try to play - this will work because it's from user interaction
+                        audio.play().then(() => {
+                            console.log('Audio initialized by user');
+                            updateMusicButton();
+                        }).catch(e => console.warn('Play failed:', e));
+                    }
+                }
+
                 // Toggle play/pause on button click
                 musicBtn.addEventListener('click', function (e) {
                     e.stopPropagation();
+
+                    // If audio hasn't been initialized yet, this is the first user interaction
+                    if (!audioInitialized) {
+                        initializeAudio();
+                        return;
+                    }
+
+                    // Normal toggle for already initialized audio
                     if (audio.paused) {
                         audio.play().then(updateMusicButton).catch(e => console.warn('Play failed:', e));
                     } else {
@@ -884,6 +907,34 @@
                 // Update button when audio state changes externally
                 audio.addEventListener('play', updateMusicButton);
                 audio.addEventListener('pause', updateMusicButton);
+
+                // Modify the existing autoplay fallback to set audioInitialized
+                if (audio) {
+                    audio.volume = 0.3;
+
+                    const playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            audioInitialized = true;
+                            updateMusicButton();
+                        }).catch(() => {
+                            function startAudioOnInteraction(e) {
+                                // Don't initialize if clicking on music button (it has its own handler)
+                                if (e.target === musicBtn) return;
+
+                                audio.play().then(() => {
+                                    console.log('Music started after user interaction');
+                                    audioInitialized = true;
+                                    updateMusicButton();
+                                }).catch(e => console.warn('Still blocked:', e));
+                                document.removeEventListener('click', startAudioOnInteraction);
+                                document.removeEventListener('touchstart', startAudioOnInteraction);
+                            }
+                            document.addEventListener('click', startAudioOnInteraction);
+                            document.addEventListener('touchstart', startAudioOnInteraction);
+                        });
+                    }
+                }
             }
 
             if (hintEl) {
