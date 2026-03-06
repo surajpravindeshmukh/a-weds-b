@@ -121,7 +121,7 @@ Designed with ❤️ to celebrate
 
 ☕ **Buy me a coffee**  
 If you enjoyed this project and wish to support the creator: https://surajpravindeshmukh.github.io/a-weds-b/
-**UPI:** `surajpravindeshmukh@upi`
+- **UPI:** `surajpravindeshmukh@upi`
 
 ---
 
