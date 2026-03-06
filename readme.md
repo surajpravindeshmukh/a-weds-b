@@ -120,8 +120,9 @@ Designed with ❤️ to celebrate
 **Marathi culture, विवाह संस्कार, आणि सहचर्य प्रेम**.
 
 ☕ **Buy me a coffee**  
-If you enjoyed this project and wish to support the creator: https://surajpravindeshmukh.github.io/a-weds-b/
-- **UPI:** `surajpravindeshmukh@upi`
+If you enjoyed this project and wish to support the creator (https://surajpravindeshmukh.github.io/a-weds-b/)
+
+**UPI:** `surajpravindeshmukh@upi`
 
 ---
 
